@@ -1,0 +1,58 @@
+.form_registro_empresa{
+    background-color: aqua;
+    width: 100%;
+}
+.formulario_123{
+    margin-top: 1%;
+    width: 80%;
+    margin-left: 10%;
+}
+.avancar2{
+    margin-top: 0%;
+    width: 10%;
+  background-color: #1677ff;
+  color: #FFFFFF;
+     margin-left: 90%;
+ }
+ .avanca1{
+    margin-top: 0%;
+    width: 10%;
+  background-color: #e6f4ff;
+  color: #1677ff;
+  
+ }
+ .Registado_com_sucesso{
+   margin-bottom: 3.75%;
+ }
+ .avancarR{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+ 
+    justify-content: space-between;
+    width: 100%;
+    
+ }
+ .passos_l{
+    margin-top: 2%;
+    width: 50%;
+    margin-left: 25%;
+ }
+ .dfa{
+    margin-bottom: 17%;
+ }
+ .asq1{
+   margin-top: 2%;
+ }
+ .provinicas_{
+   margin-bottom: 12%;
+ }
+ .formulario_123{
+   margin-bottom: 2.6%;
+ }
+ .resumo_items{
+   margin-top: 1%;
+ }
+ .resumobb{
+   margin-bottom: -2%;
+ }

@@ -1,0 +1,127 @@
+.texto_cabecari{
+    color: #FFF;
+    font-size: 16px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.nome_empresa{
+    text-align: left;
+    width: 80%;
+    margin-left: 11.4%;
+}
+.dadoss{
+    margin-top: 4%;
+}
+.corpo_certi{
+    width: 1002px;
+    background-color: aquamarine;
+}
+.klasele{
+    width: 500px;
+    margin-bottom: 7%;
+    margin-top: 5%;
+}
+.corpo_tipo_certi{
+    margin-top: 8%;
+    border:1px solid #8A593E;
+    border-radius: 7px;
+    width: 90%;
+    margin-left: 5%;
+}
+.texto_certi{
+    margin-top: 5%;
+    color: #000;
+font-size: 28px;
+font-family: Inter;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+}
+.foot2{
+    background-color: #8A593E;
+    display: flex;
+    border-radius: 7px;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    height: 50px;
+}
+.step{
+    margin-left: 2%;
+    color: #FFF;
+}
+.proximo_step{
+    margin-right: 2%;
+}
+
+.itemsq{
+    width: 30%;
+height: 100px;
+margin-left: 2%;
+border-radius: 20px;
+border: 1px solid #8C8C8C;
+display: flex;
+align-items: center;
+}
+.itemsq:hover{
+    background: #8A593E;
+    color: #FFF;
+
+}
+.itemsq h3:hover{
+   color: #FFF;
+   cursor: pointer;
+   
+  
+
+}
+
+
+.itemsq img{
+    margin-left: 4%;
+    margin-right: 4%;
+    
+    width: 70px;
+    height: 70px;
+
+}
+.items09{
+    display: flex;
+    margin-top: 4%;
+}
+.items09 h3{
+    font-family: Inter;
+    color: #000;
+font-family: Inter;
+font-size: 15px;
+font-style: normal;
+font-weight:600;
+line-height: normal;
+}
+
+
+.items09 text{
+    color: #000;
+font-family: Inter;
+font-size: 12px;
+text-align: left;
+font-weight: 400;
+
+}
+.dadaos{
+   margin-top: 1%;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 1.70%;
+}
+.logouts{
+    margin-left: 73%;
+    color: #FFF;
+
+}
+.logouts:hover{
+    cursor: pointer;
+}

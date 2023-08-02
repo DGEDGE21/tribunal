@@ -1,0 +1,60 @@
+.text1{
+    color: #999595;
+font-size: 12px;
+font-family: Inter;
+font-style: italic;
+font-weight: 400;
+line-height: normal;
+}
+.texto_cert{
+    color: #000;
+font-size: 18px;
+font-family: Inter;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.passos_{
+    width: 50%;
+    margin-top: 2%;
+    margin-left: 25%;
+}
+
+.corpo_tipo_certi{
+    margin-top: 2%;
+    margin-bottom: 1.3%;
+}
+
+.froam{
+    width: 430px;
+}
+.step{
+    color: #000;
+}
+.avancarR{
+    width: 50%;
+    margin-left: 0%;
+    margin-bottom: 3.7%;
+}
+.aas{
+    margin-right: 4%;
+}
+
+.opdc{
+    width: 80%;
+    margin-left: 10%;
+   
+}
+.separador_quitacao{
+    margin-bottom: 5.3%;
+}
+.avancarRa{
+    width: 80%;
+    margin-top: 2%;
+    
+    margin-bottom: 6.7%;
+    margin-left: 10%;
+ 
+    display: flex;
+    justify-content: space-between;
+}
