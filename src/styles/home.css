@@ -48,6 +48,7 @@ line-height: normal;
 }
 .spacew{
     width: 80%;
+
     margin-left: 10%;
    
 }
@@ -158,9 +159,11 @@ text-align: left;
 
 .homeclass{
     background-color: #F0F0F3;
+   
+    
 }
 .inputs{
-    width: 80%;
+   
     margin-left: 10%;
 }
 .hsa{

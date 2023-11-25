@@ -58,3 +58,12 @@ line-height: normal;
     display: flex;
     justify-content: space-between;
 }
+.df_ck{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.aquela_cena :hover{
+    cursor: pointer;
+}

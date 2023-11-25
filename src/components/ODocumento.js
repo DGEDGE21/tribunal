@@ -104,14 +104,14 @@ function ODocumento() {
    
            </div>
            <div className='body'>
-           <p>SEVERINO RICARDO DE CARVALHO, Administrador Judicial do Tribunal Judicial da
+           <p>SEVERINO RICARDO DE CARVALHO, Distribuidor Judicial do Tribunal Judicial da
    Cidade de Maputo</p>
-   <p>CERTIFICA QUE, compulsando os livros de entrada de acções e papéis diversos existentes nesta Secretaria - Geral, <text>não</text> consta ter dado entrada no período de {format(subMonths(new Date(dados.data_emissao),3), "dd 'do mês de' MMMM 'do ano de' yyyy", { locale: pt })} a {format(new Date(dados.data_emissao), "dd 'do mês de' MMMM 'do ano de' yyyy", { locale: pt })}, qualquer acção em que a empresa  <text>{dados.nome}</text> , decreta falência ou requer concordata.</p>
+   <p>CERTIFICA QUE, compulsando os livros de entrada de acções e papéis diversos existentes nesta Secretaria - Geral, <text>não</text> consta ter dado entrada no período de {format(subMonths(new Date(dados.data_emissao),3), "dd ' de' MMMM ' de' yyyy", { locale: pt })} a {format(new Date(dados.data_emissao), "dd 'de' MMMM ' de' yyyy", { locale: pt })}, qualquer acção em que a empresa  <text>{dados.nome}</text> , decreta falência ou requer concordata.</p>
    <p>É tudo quanto me cumpre certificar em face ao requerimento e do que os referidos livros
    reportam.</p>      
           
    <p>
-   Secretaria - Geral do Tribunal Judicial da Cidade de Maputo, aos {format(new Date(dados.data_emissao), "dd 'do mês de' MMMM 'do ano de' yyyy", { locale: pt })}.
+   Distribuição - Geral do Tribunal Judicial da Cidade de Maputo, aos {format(new Date(dados.data_emissao), "dd 'do mês de' MMMM 'do ano de' yyyy", { locale: pt })}.
    
    
    </p>
@@ -122,11 +122,10 @@ function ODocumento() {
            </div>
            <div className='infos_09'>
            <text className='a'>
-   O Administrador Judicial,
+   O Distribuidor Judicial,
    
    </text>
-     <img className='sad'  src={require('../images/Papel .png')} />
-   
+
    <text className='a'>Severino Ricardo de Carvalho.</text>
    
    

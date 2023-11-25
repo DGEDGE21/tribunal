@@ -1,0 +1,16 @@
+.Cabecario{
+    position: absolute;
+    
+}
+
+.footera{
+    position: absolute;
+  bottom: 7;
+  margin-top: 3.4%;
+}
+.log{
+    color: white;
+    position: absolute;
+    right: 1%;
+    top:3%;
+}

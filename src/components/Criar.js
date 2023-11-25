@@ -25,7 +25,7 @@ function Criar() {
     const [nome,setNome]=useState(null)
     const history = useHistory();
     const [pass,setPass]=useState(null)
-    const [details, setDetails] = useState({ nome: "", nome_empresa: "",provincia:"",cidade:"" ,nuit:"",endereco:"",vocacao:"",cell:"",mail:""})
+    const [details, setDetails] = useState({ password:"",nome: "", nome_empresa: "",provincia:"Maputo",cidade:"Maputo" ,nuit:"",endereco:"",vocacao:"",cell:"",mail:""})
   const [requiredMark, setRequiredMarkType] = useState('optional');
   const onRequiredTypeChange = ({ requiredMarkValue }: { requiredMarkValue: RequiredMark }) => {
     setRequiredMarkType(requiredMarkValue);
@@ -78,10 +78,7 @@ const handleChange2 = (value: string) => {
    
   return (
     <div className='homeclass'>
-          <div className='Cabecario'>
-                <img  src={require('../images/rep-removebg-preview.png')} />
-                <div className='texto_cabecario'>Tribunal Supremo de Moçambique</div>
-        </div>
+
        <div className='passos_l'> 
        <Steps current={step}>
         
@@ -97,8 +94,8 @@ const handleChange2 = (value: string) => {
 
        </div>
         
-
-   <Form
+    <div className='bady_U'>
+    <Form
     name="basic"
     className='formulario_123'
     form={form}
@@ -138,6 +135,20 @@ const handleChange2 = (value: string) => {
     >
       <Input onChange={e => setDetails({ ...details, vocacao: e.target.value })} value={details.vocacao} />
     </Form.Item>
+    <Form.Item
+      label="Palavra-passe"
+      name="Palavra-passe"
+      rules={[{ required: true, message: 'password!' }]}
+    >
+      <Input.Password />
+    </Form.Item>
+    <Form.Item
+      label="Confirme a Palvra-passe"
+      name="Confirme a Palvra-passe"
+      rules={[{ required: true, message: 'confirme password!' }]}
+    >
+      <Input.Password  />
+    </Form.Item>
 
   
  
@@ -173,7 +184,7 @@ requiredMark={requiredMark}
 <>
       <Form.Item className='asq1' label="Provincia" required tooltip="This is a required field">
       <Select
-      defaultValue="Selecione a provincia"
+      defaultValue="Maputo"
       style={{ width: 180 }}
       onChange={handleChange}
       options={[
@@ -227,7 +238,7 @@ requiredMark={requiredMark}
   </Form.Item>
   <Form.Item className='asq1' label="Cidade" required tooltip="This is a required field">
       <Select
-      defaultValue="Selecione a cidade"
+      defaultValue="Maputo"
       style={{ width: 180 }}
       onChange={handleChange2}
       options={[
@@ -346,7 +357,7 @@ requiredMark={requiredMark}
 
   </Form>
 
-{phase3 && <>
+    {phase3 && <>
 
     <Form
   form={form}
@@ -530,9 +541,9 @@ requiredMark={requiredMark}
  
  </>}   
 
-</>}
+    </>}
 
-{phase4 && <div className='Registado_com_sucesso'>
+    {phase4 && <div className='Registado_com_sucesso'>
     <Result
     status="success"
     title="Registrado com Sucesso"
@@ -547,33 +558,10 @@ requiredMark={requiredMark}
     </div>}
 
 
+    </div>
+  
 
-      
-  <footer className='footera'>
-    <img  className='assembl' src={require('../images/Emblem.png')} />
-    <div className='texto_fo'>
-    REPÚBLICA DE MOÇAMBIQUE
-    </div>
-    <div className='texto_fo'>
-    COPYRIGHT © 2023 TRIBUNAL SUPREMO
-    </div>
-    <img className='icons' src={require('../images/Location.png')} />
-    
-    <div className='texto_fo'>
-    103 Av. Vladimir Lenine, Maputo
-    </div>
-    <img className='icons' src={require('../images/icone horario.png')} />
-    
-    <div className='texto_fo'>
-    +258 21 323 306
-    </div>
-    <img className='icons' src={require('../images/icone horario.png')} />
-    
-    <div className='texto_fo'>
-    Horário de atendimento por telefone: 8:30h às 15:30h
-    </div>
-   
-    </footer>
+
 
 
     </div>

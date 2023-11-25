@@ -441,32 +441,6 @@ const [data_empresa,setDadosEmpresa]=useState(null);
             
   return (
     <div>
-        <div className='Cabecario'>
-                <img  src={require('./images/rep-removebg-preview.png')} />
-                <div className='titles'>
-                <div className='texto_cabecari'>República De Moçambique</div>
-                <div className='texto_cabecari'>Tribunal Supremo</div>
-                <div className='texto_cabecari'>Secretaria geral</div>
-
-                </div>
-
-
-                <div className='logouts' onClick={()=>{history.push('/')}}>
-                    <LogoutOutlined/>
-                    Sair
-                    </div>
-                
-        </div>
-
-        <Layout  style={{minHeight:'100vh'}} >
-      <Sider theme="light" className='slider' collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-      <div style={{ height: 10, margin: 16, background: 'rgba(255, 255, 255, 0.2)' }} />
-        <Menu theme="light"   onClick={handleClick}  defaultSelectedKeys={['1']} mode="inline" items={items} />
-      </Sider>
-      <Layout>
-      
-        <Content style={{ margin: '0 16px' }}>
-        
           <div style={{ padding: 24, minHeight: 360, background: colorBgContainer,marginTop:'4%' }}>
     
     {phase1 && <>
@@ -565,37 +539,6 @@ const [data_empresa,setDadosEmpresa]=useState(null);
         </div>}
      
           </div>
-        </Content>
-       
-      </Layout>
-    </Layout>
-    
-    <footer className='footera'>
-    <img  className='assembl' src={require('./images/Emblem.png')} />
-    <div className='texto_fo'>
-    REPÚBLICA DE MOÇAMBIQUE
-    </div>
-    <div className='texto_fo'>
-    COPYRIGHT © 2023 TRIBUNAL SUPREMO
-    </div>
-    <img className='icons' src={require('./images/Location.png')} />
-    
-    <div className='texto_fo'>
-    103 Av. Vladimir Lenine, Maputo
-    </div>
-    <img className='icons' src={require('./images/icone horario.png')} />
-    
-    <div className='texto_fo'>
-    +258 21 323 306
-    </div>
-    <img className='icons' src={require('./images/icone horario.png')} />
-    
-    <div className='texto_fo'>
-    Horário de atendimento por telefone: 8:30h às 15:30h
-    </div>
-   
-    </footer>
-
     </div>
   )
 }

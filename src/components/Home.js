@@ -27,15 +27,20 @@ function Home() {
         .then((data) => {
           localStorage.setItem("token", data.token);
           localStorage.setItem("username", data.nome_empresa);
+          localStorage.setItem("status_", true);
           
           message.success(`Bem vindo(a) ${details.username}`)
           
-          console.log(data)
-  
+          
           if (data.grupo == "empresa") {
             localStorage.setItem("log", true);
             localStorage.setItem("nivel", "operador");
             history.push("/home/Certidoes");
+          }
+          if (data.grupo == "arquivo") {
+            localStorage.setItem("log", true);
+            localStorage.setItem("nivel", "operador");
+            history.push("/procura/home/dash");
           }
           if (data.grupo == "tribunal") {
             localStorage.setItem("log", true);
@@ -62,21 +67,18 @@ function Home() {
   
   return (
     <div className='homeclass'>
-        {localStorage.setItem("url", "http://127.0.0.1:8000")}
-        <div className='Cabecario'>
-                <img  src={require('../images/rep-removebg-preview.png')} />
-                <div className='texto_cabecario'>Tribunal Supremo de Moçambique</div>
-        </div>
-
+        {localStorage.setItem("url", "http://127.0.0.1:8000")
+       
+        }
+       
     <div className='Login_class'>
-    <img  src={require('../images/rep-removebg-preview.png')} />
     <div className='dados'>
     <div className='a'>
       
     <label >Nome de usuário ou endereço do email</label>
-      <Input  onChange={e => setDetails({ ...details, username: e.target.value })} value={details.username} className='inputs' size="large"  prefix={<UserOutlined />} />
+      <Input  style={{ width: '80%'}} onChange={e => setDetails({ ...details, username: e.target.value })} value={details.username} className='inputs' size="large"  prefix={<UserOutlined />} />
       <label>Senha</label>
-      <Input.Password  onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password}  className='inputs'   size="large"  prefix={<KeyOutlined />} />
+      <Input.Password  style={{ width: '80%'}}  onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password}  className='inputs'   size="large"  prefix={<KeyOutlined />} />
      
 
     </div>
@@ -103,31 +105,7 @@ function Home() {
     </div>
         
     
-    <footer className='footera'>
-    <img  className='assembl' src={require('../images/Emblem.png')} />
-    <div className='texto_fo'>
-    REPÚBLICA DE MOÇAMBIQUE
-    </div>
-    <div className='texto_fo'>
-    COPYRIGHT © 2023 TRIBUNAL SUPREMO
-    </div>
-    <img className='icons' src={require('../images/Location.png')} />
-    
-    <div className='texto_fo'>
-    103 Av. Vladimir Lenine, Maputo
-    </div>
-    <img className='icons' src={require('../images/icone horario.png')} />
-    
-    <div className='texto_fo'>
-    +258 21 323 306
-    </div>
-    <img className='icons' src={require('../images/icone horario.png')} />
-    
-    <div className='texto_fo'>
-    Horário de atendimento por telefone: 8:30h às 15:30h
-    </div>
-   
-    </footer>
+
 
     </div>
   )

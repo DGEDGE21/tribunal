@@ -2,7 +2,7 @@ import React,{useState,useRef,useEffect} from 'react'
 import './styles/certi.css'
 import axios from 'axios';
 import { Input, Space,Table,Card,Button,Select, message} from 'antd';
-import { Col, Row } from 'antd';
+import { Segmented,Avatar } from 'antd';
 import { useHistory } from "react-router-dom";
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Highlighter from 'react-highlight-words';
@@ -11,30 +11,38 @@ import {
     FieldTimeOutlined,
     LeftCircleOutlined,
     SearchOutlined,
-    LogoutOutlined
+    LogoutOutlined,UserOutlined
   } from '@ant-design/icons';
   import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme,Alert,Tag } from 'antd';
+import { set } from 'date-fns';
+import { tr } from 'date-fns/locale';
   
   
 function OPedidos() {
     const { Search } = Input;
     const history = useHistory();
     const { Header, Content, Footer, Sider } = Layout;
-
     const [error, setError] = useState();
     const [lista,setLista]=useState(null);
     const [searchText, setSearchText] = useState('');
-  const [searchedColumn, setSearchedColumn] = useState('');
-  const [loading,setLoading]=useState(21);
-  const [text,setText]=useState('')
-  
-  const searchInput = useRef(null);
-  const [phase1,setPhase1]=useState('ds');
-  const { TextArea } = Input;
-  const [phase2,setPhase2]=useState(null);
-const [data_empresa,setDadosEmpresa]=useState(null);
-
+    const [searchedColumn, setSearchedColumn] = useState('');
+    const [loading,setLoading]=useState(21);
+    const [text,setText]=useState('')
+    const searchInput = useRef(null);
+    const [phase1,setPhase1]=useState('ds');
+    const { TextArea } = Input;
+    const [phase2,setPhase2]=useState(null);
+    const [data_empresa,setDadosEmpresa]=useState(null);
+    const [usuario,setUsuario] = useState(13);
+    const [pedido,setPedido] = useState(13);
+    const [review,setReview]=useState(null);
+    const [review2,setReview2]=useState(null);
+    const onChangepay: SegmentedProps['onChange']=(value:string)=>{
+        console.log(value)
+  setUsuario(parseInt(value));
+ 
+}
   const Search_empresa=(df)=>{
    
     const phase3=phase2
@@ -51,6 +59,13 @@ const [data_empresa,setDadosEmpresa]=useState(null);
       }).then(d => {
         message.success('Carregado com sucesso')
         setDadosEmpresa(d.data);
+        if (d.data.assinalado_er==="0"){
+              setReview2(null)
+              setReview(true)
+        }else{
+          setReview(null)
+          setReview2(true)
+        }
       
       }
   
@@ -58,6 +73,30 @@ const [data_empresa,setDadosEmpresa]=useState(null);
         console.log(df)
         message.error('Servidor indisponivel')
       })
+
+  }
+
+  const Submter_ao_arquivo=()=>{
+    axios({
+      method: "post",
+      url: `${localStorage.getItem('url')}/web/Assinalar_Funcionario/`,
+      headers: { 'Authorization': `token ${localStorage.getItem('token')}`, 'Content-Type': 'application/json' },
+      data: { idPedido: pedido ,idUsuario:usuario }
+    }).then(dat => {
+      if (dat.status !== 200) {
+        throw Error('Dados de acesso invalidos');
+      }
+      return dat
+    }).then(d => {
+      message.success('Carregado com sucesso')
+      history.push('/opera/home/dash')
+    
+    }
+
+    ).catch(e => {
+      
+      message.error('Servidor indisponivel')
+    })
 
   }
   const NQuitar_Empresa=()=>{
@@ -338,11 +377,11 @@ const [data_empresa,setDadosEmpresa]=useState(null);
           },
           {
             title: 'Estado',
-            key: 'estado_info',
-            dataIndex: 'estado_info',
-            render: (_, { estado_info }) => (
-                <Tag color='green'>
-              Ativo
+            key: 'info',
+            dataIndex: 'info',
+            render: (_, { info,color }) => (
+                <Tag color={color}>
+              {info}
             </Tag>
               ),
           },
@@ -350,7 +389,7 @@ const [data_empresa,setDadosEmpresa]=useState(null);
             title: 'accao',
             key: 'idPedido',
             dataIndex: 'idPedido',
-            render: (text) => <a onClick={()=>{setPhase2(`${text}`);setPhase1(null);Search_empresa(text)}}>Processar</a>,
+            render: (text) => <a onClick={()=>{setPhase2(`${text}`);setPedido(text);setPhase1(null);Search_empresa(text)}}>Processar</a>,
           },
          
           
@@ -442,33 +481,8 @@ const [data_empresa,setDadosEmpresa]=useState(null);
             
   return (
     <div>
-        <div className='Cabecario'>
-                <img  src={require('./images/rep-removebg-preview.png')} />
-                <div className='titles'>
-                <div className='texto_cabecari'>República De Moçambique</div>
-                <div className='texto_cabecari'>Tribunal Supremo</div>
-                <div className='texto_cabecari'>Secretaria geral</div>
-
-                </div>
-
-
-                <div className='logouts' onClick={()=>{history.push('/')}}>
-                    <LogoutOutlined/>
-                    Sair
-                    </div>
-                
-        </div>
-
-        <Layout  style={{minHeight:'100vh'}} >
-      <Sider theme="light" className='slider' collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-      <div style={{ height: 10, margin: 16, background: 'rgba(255, 255, 255, 0.2)' }} />
-        <Menu theme="light"   onClick={handleClick}  defaultSelectedKeys={['1']} mode="inline" items={items} />
-      </Sider>
-      <Layout>
       
-        <Content style={{ margin: '0 16px' }}>
-        
-          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer,marginTop:'4%' }}>
+      <div >
     
     {phase1 && <>
         <Table columns={columns}  onChange={onChange}  dataSource={lista}     pagination={{
@@ -479,13 +493,14 @@ const [data_empresa,setDadosEmpresa]=useState(null);
 
     </>}
 
-    {phase2 && <>
+    {phase2 && <div >
   
-  {data_empresa && <>
+  {data_empresa && 
+  <div >
     
     <div className='lista_pedidoss-s'>
     
-    <Card   className='d' title={'Informação do pedido'}><p>
+    <Card  style={{marginLeft:'6.5%'}}  className='d' title={'Informação do pedido'}><p>
      <text>
      Data de submissão:
         </text> 
@@ -509,7 +524,7 @@ const [data_empresa,setDadosEmpresa]=useState(null);
         </Card>
         
     
-    <Card   className='d' title={'Informação da Empresa'}><p>
+    <Card  style={{marginLeft:'6.7%'}}  className='d' title={'Informação da Empresa'}><p>
      <text>
      Nome:
         </text> 
@@ -540,10 +555,13 @@ const [data_empresa,setDadosEmpresa]=useState(null);
   
   </div>
 
-  <div className='campo'>
+   {review2 && <>
+    <div className='campo'>
   <TextArea showCount rows={5} onChange={onSearch} placeholder="Observacoes comprimento máximo são 50 caracteres" maxLength={50} />
 
   </div>
+  
+  
   <div className='camposq'>
   <Button className='reprovar' onClick={NQuitar_Empresa} type="primary" danger>Reprovar</Button>
       
@@ -551,10 +569,54 @@ const [data_empresa,setDadosEmpresa]=useState(null);
   
   </div>
   
+   </>  
+  
+  }
+ {review && <>
+  <div className='top_info'>Assinale um Funcionário para rever o Arquivo </div>
+  <Space className='klsa'   direction="vertical">
+    <Segmented
+    onChange={setUsuario}
+      options={[
+        {
+          label: (
+            <div style={{ padding: 4 }}>
+              
+              <Avatar  shape="square" size={64} icon={<UserOutlined />}  />
+              <div>Antonio Marcos</div>
+            </div>
+          ),
+          value: 13,
+        },
+        {
+          label: (
+            <div style={{ padding: 4 }}>
+                <Avatar  shape="square" size={64} icon={<UserOutlined />}  />
+              <div>Ribeiro Tembe</div>
+            </div>
+          ),
+          value: 14,
+        },
+     
+      
+      ]}
+    />
+ 
+  </Space>
+  <div className='camposq'>
+
+      
+  <Button  className='aprovar' onClick={()=>{Submter_ao_arquivo()}} type="primary"  >submeter</Button>
+  
+  </div>
+  
+ </>}
+ 
+  
   
 
 
-  </>
+  </div>
 
 
 
@@ -564,12 +626,12 @@ const [data_empresa,setDadosEmpresa]=useState(null);
   }
   
     
-    </>}
+    </div>}
 
     
 {phase1 &&      <div className='foot2'>
         
-        <Button className='step' onClick={()=>{history.push('/admin/home/dash')}}><LeftCircleOutlined/></Button>
+        <Button className='step' onClick={()=>{history.push('/opera/home/dash')}}><LeftCircleOutlined/></Button>
         </div>}
         {phase2 &&      <div className='foot2'>
         
@@ -577,36 +639,7 @@ const [data_empresa,setDadosEmpresa]=useState(null);
         </div>}
      
           </div>
-        </Content>
-       
-      </Layout>
-    </Layout>
     
-    <footer className='footera'>
-    <img  className='assembl' src={require('./images/Emblem.png')} />
-    <div className='texto_fo'>
-    REPÚBLICA DE MOÇAMBIQUE
-    </div>
-    <div className='texto_fo'>
-    COPYRIGHT © 2023 TRIBUNAL SUPREMO
-    </div>
-    <img className='icons' src={require('./images/Location.png')} />
-    
-    <div className='texto_fo'>
-    103 Av. Vladimir Lenine, Maputo
-    </div>
-    <img className='icons' src={require('./images/icone horario.png')} />
-    
-    <div className='texto_fo'>
-    +258 21 323 306
-    </div>
-    <img className='icons' src={require('./images/icone horario.png')} />
-    
-    <div className='texto_fo'>
-    Horário de atendimento por telefone: 8:30h às 15:30h
-    </div>
-   
-    </footer>
 
     </div>
   )

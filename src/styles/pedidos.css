@@ -16,6 +16,8 @@ margin-left: 0%;
 }
 .comp{
     background-color:#F0F0F3;
+    overflow: scroll;
+    margin-bottom: 50px;
 }
 .lista_pedidos{
     width: 1020px;
