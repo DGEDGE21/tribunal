@@ -67,7 +67,7 @@ function Home() {
   
   return (
     <div className='homeclass'>
-        {localStorage.setItem("url", "http://10.0.255.37:8000")
+        {localStorage.setItem("url", "http://127.0.0.1:8001")
        
         }
        

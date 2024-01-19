@@ -28,9 +28,11 @@
     display: flex;
     flex-direction: row;
     margin-top: 5%;
- 
-    justify-content: space-between;
+    margin-left: 80%;
     width: 100%;
+
+    justify-content: space-between;
+   
     
  }
  .passos_l{

@@ -4,9 +4,10 @@
 }
 
 .footera{
-    position: absolute;
-  bottom: 7;
-  margin-top: 3.4%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
 }
 .log{
     color: white;

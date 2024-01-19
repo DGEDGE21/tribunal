@@ -336,7 +336,11 @@ requiredMark={requiredMark}
 
 
  
- {phase1   && <Form.Item>
+
+
+
+  </Form>
+  {phase1   && <>
 
 <div className='avancarR'> 
 <Button className='avanca1' onClick={()=>{history.push('/')}}  ><LeftCircleOutlined /></Button>
@@ -344,18 +348,16 @@ requiredMark={requiredMark}
 <Button className='avancar2' onClick={()=>{setPhase1(null);setPhase2('sdsd')}}  ><RightCircleOutlined /></Button>
 </div>
 
-</Form.Item>}
-{phase2 && <Form.Item >
+</>}
+{phase2 && <>
 <div className='avancarR'>  
 <Button className='avanca1' onClick={()=>{setPhase1('dfdf');setPhase2(null)}}  ><LeftCircleOutlined /></Button>
   
 <Button className='avancar2' onClick={()=>{setPhase2(null);setPhase3('sdsd');setStep(1)}}  ><RightCircleOutlined /></Button>
 </div>
       
-    </Form.Item>}
-
-
-  </Form>
+    </>}
+    
 
     {phase3 && <>
 
